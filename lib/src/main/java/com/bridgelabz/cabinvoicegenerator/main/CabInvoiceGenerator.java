@@ -1,6 +1,7 @@
 package com.bridgelabz.cabinvoicegenerator.main;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CabInvoiceGenerator {
 
@@ -28,13 +29,21 @@ public class CabInvoiceGenerator {
 		}
 		return result;
 	}
-	public void calFareForMultipleRides(ArrayList<CabInvoiceGenerator> person) {
+	public double calFareForMultipleRides(ArrayList<CabInvoiceGenerator> person) {
 		person.stream().forEach(n -> {
 			totalFare = totalFare + n.calculateFare();
 			noOfRides++;
-			System.out.println("The average fare for ride " + noOfRides + " is " + n.calculateFare());
 		});
-		System.out.println("The number of rides are " + noOfRides  + " and total fare is " + totalFare);
+		return totalFare;
 	}
+	
+	public void calInvoiceForMultipleUsers(HashMap<String, ArrayList<CabInvoiceGenerator>> rideRepository) {
+		rideRepository.forEach((key,value) -> {
+			double fare = calFareForMultipleRides(value);
+			System.out.println("User-"+key + " has total fare " + fare);
+		});
+	}
+	
+	
 
 }
