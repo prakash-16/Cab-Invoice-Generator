@@ -12,7 +12,7 @@ public class CabInvoiceTest {
 	ArrayList<CabInvoiceGenerator> invoice = new ArrayList<CabInvoiceGenerator>();
 	
 	@Test
-	public void shouldReturnTotaFareValueForMultipleRides() {
+	public void enhancedInvoiceReturns_AvgFarePerRide_NoOfRides_TotaFare() {
 		invoice.add(new CabInvoiceGenerator(2.0,5.2));
 		invoice.add(new CabInvoiceGenerator(5.0,7.7));
 		invoice.add(new CabInvoiceGenerator(1.7,4.2));
