@@ -10,6 +10,7 @@ public class CabInvoiceGenerator {
 	public double distance;
 	public double time;
 	public double totalFare = 0;
+	public int noOfRides = 0;
 	
 	public CabInvoiceGenerator(){
 		
@@ -30,8 +31,10 @@ public class CabInvoiceGenerator {
 	public void calFareForMultipleRides(ArrayList<CabInvoiceGenerator> person) {
 		person.stream().forEach(n -> {
 			totalFare = totalFare + n.calculateFare();
+			noOfRides++;
+			System.out.println("The average fare for ride " + noOfRides + " is " + n.calculateFare());
 		});
-		System.out.println("The total fare is " + totalFare);
+		System.out.println("The number of rides are " + noOfRides  + " and total fare is " + totalFare);
 	}
 
 }
